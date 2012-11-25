@@ -57,6 +57,9 @@
     [self searchWithBookName:[self.BookName text]];
 }
 
+- (IBAction)tapBackground:(id)sender {
+}
+
 -(void)didUpdate
 {
      self->update = true;

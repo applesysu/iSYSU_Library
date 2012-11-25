@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LIBDataManager.h"
 #import "LIBLogInViewController.h"
-#import "LIBRemindViewController.h"
+#import "LIBTIMEViewController.h"
 #import "LIBConfigureViewController.h"
 #import "Book.h"
 #import "RadioButton.h"
@@ -26,7 +26,7 @@
 - (IBAction)DidRenew:(id)sender;
 -(void)getInfo;
 -(void)setStyle;
--(void)setBtn;
+-(NSString *)DaysCalculator:(NSString *)deadline;
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
 //- (void)btnClicked:(id)sender event:(id)event;
 - (void)rbtnClicked:(id)sender event:(id)event;
