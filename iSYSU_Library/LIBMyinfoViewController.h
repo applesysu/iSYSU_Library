@@ -13,7 +13,7 @@
 #import "LIBConfigureViewController.h"
 #import "Book.h"
 #import "RadioButton.h"
-@interface LIBMyinfoViewController : UIViewController
+@interface LIBMyinfoViewController : UIViewController<UIAlertViewDelegate>
 {
     @private NSInteger currentBookIndex;
 }
@@ -24,6 +24,7 @@
 - (IBAction)logout:(id)sender;
 -(void)Login;
 - (IBAction)DidRenew:(id)sender;
+-(void)doRenew;
 -(void)getInfo;
 -(void)setStyle;
 -(NSString *)DaysCalculator:(NSString *)deadline;

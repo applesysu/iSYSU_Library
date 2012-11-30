@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A86A4E681661F54E00513FA8 /* greenBox.png in Resources */ = {isa = PBXBuildFile; fileRef = A86A4E671661F54E00513FA8 /* greenBox.png */; };
 		A86A95031661BE7800D5B20A /* alarmSetLine.png in Resources */ = {isa = PBXBuildFile; fileRef = A86A95011661BE7800D5B20A /* alarmSetLine.png */; };
 		A86A95041661BE7800D5B20A /* alarmSetLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A86A95021661BE7800D5B20A /* alarmSetLine@2x.png */; };
 		A86A95071661CA4600D5B20A /* nav.png in Resources */ = {isa = PBXBuildFile; fileRef = A86A95061661CA4600D5B20A /* nav.png */; };
+		A86A953D1661D30700D5B20A /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A953A1661D30700D5B20A /* Book.m */; };
+		A86A953E1661D30700D5B20A /* BookManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A953C1661D30700D5B20A /* BookManage.m */; };
 		A86B164F1660E94800B86A3D /* LIBTIMEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86B164E1660E94800B86A3D /* LIBTIMEViewController.m */; };
 		A86B166C1660EF8100B86A3D /* accountSet.png in Resources */ = {isa = PBXBuildFile; fileRef = A86B16611660EF8100B86A3D /* accountSet.png */; };
 		A86B166D1660EF8100B86A3D /* accountSet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A86B16621660EF8100B86A3D /* accountSet@2x.png */; };
@@ -109,7 +112,6 @@
 		A89BF91A165B63AE00514347 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = A89BF8E9165B63AE00514347 /* Thumbs.db */; };
 		A89BF921165B67EC00514347 /* LIBMyBookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89BF920165B67EC00514347 /* LIBMyBookCellView.xib */; };
 		A89BF929165B819100514347 /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A89BF928165B819100514347 /* RadioButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A8C168141650C47D0037C497 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C168111650C47D0037C497 /* Book.m */; };
 		A8C168151650C47D0037C497 /* BorrowBooks.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C168131650C47D0037C497 /* BorrowBooks.m */; };
 		A8C168191650F8B30037C497 /* LIBBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C168171650F8B20037C497 /* LIBBookViewController.m */; };
 		B0863125164B848C00451893 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0863124164B848C00451893 /* UIKit.framework */; };
@@ -131,9 +133,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A86A4E671661F54E00513FA8 /* greenBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenBox.png; sourceTree = "<group>"; };
 		A86A95011661BE7800D5B20A /* alarmSetLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmSetLine.png; sourceTree = "<group>"; };
 		A86A95021661BE7800D5B20A /* alarmSetLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmSetLine@2x.png"; sourceTree = "<group>"; };
 		A86A95061661CA4600D5B20A /* nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav.png; sourceTree = "<group>"; };
+		A86A95391661D30700D5B20A /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		A86A953A1661D30700D5B20A /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		A86A953B1661D30700D5B20A /* BookManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookManage.h; sourceTree = "<group>"; };
+		A86A953C1661D30700D5B20A /* BookManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookManage.m; sourceTree = "<group>"; };
 		A86B164D1660E94800B86A3D /* LIBTIMEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIBTIMEViewController.h; sourceTree = "<group>"; };
 		A86B164E1660E94800B86A3D /* LIBTIMEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIBTIMEViewController.m; sourceTree = "<group>"; };
 		A86B16611660EF8100B86A3D /* accountSet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accountSet.png; sourceTree = "<group>"; };
@@ -253,8 +260,6 @@
 		A89BF920165B67EC00514347 /* LIBMyBookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIBMyBookCellView.xib; sourceTree = "<group>"; };
 		A89BF927165B819100514347 /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
 		A89BF928165B819100514347 /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
-		A8C168101650C47D0037C497 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
-		A8C168111650C47D0037C497 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		A8C168121650C47D0037C497 /* BorrowBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorrowBooks.h; sourceTree = "<group>"; };
 		A8C168131650C47D0037C497 /* BorrowBooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorrowBooks.m; sourceTree = "<group>"; };
 		A8C168161650F8B20037C497 /* LIBBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIBBookViewController.h; sourceTree = "<group>"; };
@@ -331,8 +336,10 @@
 		A884FC48164F57850035E296 /* LIBClient */ = {
 			isa = PBXGroup;
 			children = (
-				A8C168101650C47D0037C497 /* Book.h */,
-				A8C168111650C47D0037C497 /* Book.m */,
+				A86A95391661D30700D5B20A /* Book.h */,
+				A86A953A1661D30700D5B20A /* Book.m */,
+				A86A953B1661D30700D5B20A /* BookManage.h */,
+				A86A953C1661D30700D5B20A /* BookManage.m */,
 				A8C168121650C47D0037C497 /* BorrowBooks.h */,
 				A8C168131650C47D0037C497 /* BorrowBooks.m */,
 				A884FC77164F58DE0035E296 /* User.h */,
@@ -453,6 +460,7 @@
 		A88D4269165766C100D507D1 /* uiElement */ = {
 			isa = PBXGroup;
 			children = (
+				A86A4E671661F54E00513FA8 /* greenBox.png */,
 				A86B16601660EF8100B86A3D /* setting */,
 				A89BF8B6165B63AE00514347 /* icon.png */,
 				A89BF8B7165B63AE00514347 /* icon@2x */,
@@ -759,6 +767,7 @@
 				A86A95031661BE7800D5B20A /* alarmSetLine.png in Resources */,
 				A86A95041661BE7800D5B20A /* alarmSetLine@2x.png in Resources */,
 				A86A95071661CA4600D5B20A /* nav.png in Resources */,
+				A86A4E681661F54E00513FA8 /* greenBox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,12 +802,13 @@
 				A884FC75164F584D0035E296 /* TFHppleElement.m in Sources */,
 				A884FC76164F584D0035E296 /* XPathQuery.m in Sources */,
 				A884FC79164F58DE0035E296 /* User.m in Sources */,
-				A8C168141650C47D0037C497 /* Book.m in Sources */,
 				A8C168151650C47D0037C497 /* BorrowBooks.m in Sources */,
 				A8C168191650F8B30037C497 /* LIBBookViewController.m in Sources */,
 				A871699416578EC800782778 /* LIBSetPSWViewController.m in Sources */,
 				A89BF929165B819100514347 /* RadioButton.m in Sources */,
 				A86B164F1660E94800B86A3D /* LIBTIMEViewController.m in Sources */,
+				A86A953D1661D30700D5B20A /* Book.m in Sources */,
+				A86A953E1661D30700D5B20A /* BookManage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +839,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -844,6 +855,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -853,7 +865,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -862,6 +875,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

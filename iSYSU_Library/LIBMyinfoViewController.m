@@ -69,7 +69,7 @@
     if ([self.tabBarController.tabBar respondsToSelector:@selector(setTintColor:)])
         self.tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"tabBar.png"];
     self.tabBarController.tabBar.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [[UIDevice currentDevice] systemVersion];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] > 4.9) {
         
@@ -85,7 +85,8 @@
     UILabel *title= [[UILabel alloc] initWithFrame:rect];
     title.backgroundColor = [UIColor clearColor];
     title.text = @" 我的图书馆";
-    title.textColor = [UIColor colorWithRed:145.0f/255.0f green:229.0f/255.0f blue:145.0f/255.0f alpha:1.0f];
+    title.textColor = [UIColor whiteColor];
+    //title.textColor = [UIColor colorWithRed:145.0f/255.0f green:229.0f/255.0f blue:145.0f/255.0f alpha:1.0f];
     self.navigationItem.titleView = title;
 
 }
@@ -114,13 +115,31 @@
 }
 
 - (IBAction)DidRenew:(id)sender {
+    
+    UIAlertView *first_alert = [[UIAlertView alloc] initWithTitle:nil message:@"是否续借" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [first_alert show];
+   
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        
+        [self doRenew];
+    } else {
+        
+        return;
+    }
+}
+
+-(void)doRenew
+{
     NSLog(@"%d",currentBookIndex);
     [self RenewWithIndex:self->currentBookIndex];
     NSString * msg = [self getRewMsg];
     NSLog(@"%@",msg);
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"续借结果" message:msg delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
     [alert show];
-    
 }
 
 - (IBAction)logout:(id)sender {
@@ -154,7 +173,7 @@
             NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"LIBMyBookCellView" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        NSString *bgImgPath = [[NSBundle mainBundle] pathForResource:usrDark ? @"darkbg" : @"lightbg" ofType:@"png"];
+        NSString *bgImgPath = [[NSBundle mainBundle] pathForResource:usrDark ? @"greenBox" : @"lightbg" ofType:@"png"];
         UIImage *bgImg = [[UIImage imageWithContentsOfFile:bgImgPath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
         cell.backgroundView = [[UIImageView alloc] initWithImage:bgImg];
         cell.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

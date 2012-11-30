@@ -22,6 +22,7 @@
 - (NSString *)filePath{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDirectory, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"%@", documentsDirectory);
     return [documentsDirectory stringByAppendingPathComponent:kFileName];
 }
 
@@ -208,7 +209,7 @@
     CGFloat width_ =  tableView.bounds.size.width;
    //width_ /= 10;
     UIView * sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, 220)];
-    [sectionView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nav.png"]]];
+    [sectionView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"alarmSetLine.png"]]];
     [sectionView addSubview:label];
     return sectionView;
 }
