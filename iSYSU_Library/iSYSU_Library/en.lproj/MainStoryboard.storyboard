@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11B26" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="AxV-NM-ogW">
     <dependencies>
+        <deployment defaultVersion="1280" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
     <scenes>
+        <scene sceneID="Rhy-By-7xm">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S7j-cc-ZCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="QiO-Za-u3c" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="searchBtn_On.png" id="EMz-5t-bKV"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FkB-JJ-5l5">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MAN-ap-AUo" kind="relationship" relationship="rootViewController" id="lPJ-it-QB3"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-2191" y="-527"/>
+        </scene>
         <scene sceneID="CfP-hb-DEW">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HrO-Wo-oMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -20,12 +36,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d01-Dk-Jf7">
-                                <rect key="frame" x="221" y="176" width="55" height="37"/>
+                                <rect key="frame" x="221" y="176" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="search">
+                                    <color key="titleColor" red="0.56862747669219971" green="0.89803928136825562" blue="0.56862747669219971" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,11 +76,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="BookName" destination="qlD-aW-xdF" id="dRJ-VI-O3R"/>
-                        <segue destination="EVW-6E-fTe" kind="push" identifier="search" id="XiU-fG-ZH6"/>
+                        <outlet property="Change_Switch_Button" destination="d01-Dk-Jf7" id="Kbh-dl-N2h"/>
+                        <segue destination="EVW-6E-fTe" kind="push" identifier="search" id="TLI-qh-kEm"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1685" y="-486"/>
+            <point key="canvasLocation" x="-1331" y="-566"/>
         </scene>
         <scene sceneID="cY4-tP-ZOv">
             <objects>
@@ -136,14 +154,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="QhA-bG-cDS"/>
+                    <navigationItem key="navigationItem" id="R9g-a8-Nqp"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableview" destination="TcA-AI-DXa" id="hX1-A4-t1d"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-772" y="-486"/>
+            <point key="canvasLocation" x="-774" y="-548"/>
         </scene>
         <scene sceneID="D7J-HJ-ToL">
             <objects>
@@ -228,7 +246,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rzl-HN-FOU"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="authorIB" destination="WaL-uk-qF2" id="eQQ-ok-SWC"/>
                         <outlet property="bookImgIB" destination="SQu-cT-i7B" id="tKy-OT-Mpw"/>
@@ -239,7 +256,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="322" y="-548"/>
+            <point key="canvasLocation" x="-204" y="-548"/>
         </scene>
         <scene sceneID="xTB-8v-0Pc">
             <objects>
@@ -252,7 +269,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="911" y="-572"/>
+            <point key="canvasLocation" x="385" y="-572"/>
         </scene>
         <scene sceneID="7aG-B7-IRi">
             <objects>
@@ -282,11 +299,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.56862747670000002" green="0.8980392814" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aIY-7H-qq5">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aIY-7H-qq5">
                                         <rect key="frame" x="0.0" y="46" width="306" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="286" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="266" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -390,7 +407,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1639" y="249"/>
+            <point key="canvasLocation" x="-757" y="141"/>
         </scene>
         <scene sceneID="PdF-SQ-rFo">
             <objects>
@@ -456,7 +473,7 @@
                                         <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="   3天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gnI-XZ-W5J">
@@ -475,7 +492,7 @@
                                         <rect key="frame" x="0.0" y="227" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="   1天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yIc-VE-4a0">
@@ -517,7 +534,7 @@
                                         <rect key="frame" x="0.0" y="363" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="   1天/次" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="trE-aO-oid">
@@ -570,7 +587,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-1184" y="413"/>
+            <point key="canvasLocation" x="-970" y="809"/>
         </scene>
         <scene sceneID="yAp-rb-VQ7">
             <objects>
@@ -678,7 +695,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1151" y="1031"/>
+            <point key="canvasLocation" x="-981" y="1401"/>
         </scene>
         <scene sceneID="7D6-ve-6oI">
             <objects>
@@ -789,19 +806,19 @@
                                 <rect key="frame" x="153" y="67" width="138" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="wiH-eI-WWj">
                                 <rect key="frame" x="153" y="108" width="138" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="fwj-7Z-7cI">
                                 <rect key="frame" x="153" y="30" width="138" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -840,7 +857,7 @@
                                 <rect key="frame" x="112" y="142" width="148" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gPy-jZ-Hbw">
                                 <rect key="frame" x="188" y="192" width="72" height="37"/>
@@ -910,7 +927,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1OG-Hu-ZDe" kind="relationship" relationship="viewControllers" id="fz3-H6-EgL"/>
+                        <segue destination="QiO-Za-u3c" kind="relationship" relationship="viewControllers" id="ADK-W5-bXb"/>
                         <segue destination="dUx-Lr-KwX" kind="relationship" relationship="viewControllers" id="9ug-s2-b2Y"/>
                     </connections>
                 </tabBarController>
@@ -941,25 +958,6 @@
             </objects>
             <point key="canvasLocation" x="-2232" y="237"/>
         </scene>
-        <scene sceneID="gA9-P6-Gzb">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fNR-WQ-5hr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="1OG-Hu-ZDe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="cwV-SF-hg2"/>
-                    <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="NaM-kB-5Vn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="MAN-ap-AUo" kind="relationship" relationship="rootViewController" id="CdG-ow-nEz"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-2211" y="-486"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Library1.png" width="219" height="104"/>
@@ -971,6 +969,7 @@
         <image name="homeBtn_Off.png" width="30" height="30"/>
         <image name="phonenum.png" width="285" height="41"/>
         <image name="renewBtn.png" width="41" height="37"/>
+        <image name="searchBtn_On.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="LIBBookViewController" superclassName="UIViewController">
@@ -1037,6 +1036,7 @@
                 <relationship kind="action" name="stb:"/>
                 <relationship kind="action" name="tapBackground:"/>
                 <relationship kind="outlet" name="BookName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="Change_Switch_Button" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="LIBSetPSWViewController" superclassName="UIViewController">

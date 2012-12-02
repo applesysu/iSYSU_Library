@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "LIBDataManager.h"
+
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <netinet/in.h>
+#import "LIBMyinfoViewController.h"
+
+#define kDateFilename @"noti_date.plist"
+#define KUserInfoFilename @"date.plist"
 @interface LIBSearchViewController : UIViewController
 {
     @private
@@ -21,6 +28,7 @@
 -(void)didUpdate;
 -(void)didnotUpdate;
 -(BOOL)getUpdate;
--(void)searchWithBookName:(NSString *)name;
--(void)showSearchResult:(NSArray *)searchResult;
+//-(void)searchWithBookName:(NSString *)name;
+//-(void)showSearchResult:(NSArray *)searchResult;
+@property (weak, nonatomic) IBOutlet UIButton *Change_Switch_Button;
 @end

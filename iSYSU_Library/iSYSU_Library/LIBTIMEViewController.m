@@ -37,22 +37,22 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     /*
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"alarmSetLine.png"]];
-    self.tableView.backgroundView = view;
-    //[self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"alarmSetLine.png"]]];
-    
-    //清除背景颜色
-    
-    int tmep_num[] = {1,3,2,1};
-    for (int i= 0; i < 4; i++) {
-        for (int j = 0; j < tmep_num[i]; j++) {
-            NSIndexPath *temp_index = [NSIndexPath indexPathForRow:j inSection:i];
-            UITableViewCell *temp_cell = [self.tableView cellForRowAtIndexPath:temp_index];
-            temp_cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"alarmSetLine.png"]];
-            [temp_cell.textLabel setBackgroundColor:[UIColor clearColor]];
-        }
-    }
+     UIView *view = [[UIView alloc] init];
+     view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"alarmSetLine.png"]];
+     self.tableView.backgroundView = view;
+     //[self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"alarmSetLine.png"]]];
+     
+     //清除背景颜色
+     
+     int tmep_num[] = {1,3,2,1};
+     for (int i= 0; i < 4; i++) {
+     for (int j = 0; j < tmep_num[i]; j++) {
+     NSIndexPath *temp_index = [NSIndexPath indexPathForRow:j inSection:i];
+     UITableViewCell *temp_cell = [self.tableView cellForRowAtIndexPath:temp_index];
+     temp_cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"alarmSetLine.png"]];
+     [temp_cell.textLabel setBackgroundColor:[UIColor clearColor]];
+     }
+     }
      */
     
     [super viewWillAppear:animated];
@@ -72,7 +72,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
     }else{
-        NSDate *now = [NSDate date];
+        now = [NSDate date];
         Time_Show.text = [NSDateFormatter localizedStringFromDate:now dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle];
         lastIndexPath_section1 = [NSIndexPath indexPathForRow:2 inSection:1];
         lastIndexPath_section2 = [NSIndexPath indexPathForRow:0 inSection:2];
@@ -96,23 +96,39 @@
     [array addObject:row2_temp];
     [array addObject:Time_Show.text];
     
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    unsigned int unitFlags = NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dd = [cal components:unitFlags fromDate:now];
+    int week = [dd weekday];
+    int hour = [dd hour];
+    int minute = [dd minute];
+    int second = [dd second];
+    NSLog(@"%d %d",hour,minute);
+    NSNumber *Hour = [[NSNumber alloc] initWithInt:hour];
+    NSNumber *Minute = [[NSNumber alloc] initWithInt:minute];
+    [array addObject:Hour];
+    [array addObject:Minute];
+    
     [array writeToFile:[self filePath] atomically:YES];
+    
+    
+    
 }
 
 /*
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    NSLog([NSString stringWithFormat:@"yeah"]);
-    
-     lastIndexPath_section1 = [NSIndexPath indexPathForRow:1 inSection:1];
-     lastIndexPath_section2 = [NSIndexPath indexPathForRow:1 inSection:2];
-     [self.tableView selectRowAtIndexPath:lastIndexPath_section1 animated:YES scrollPosition:UITableViewScrollPositionNone];
-     [self.tableView selectRowAtIndexPath:lastIndexPath_section2 animated:YES scrollPosition:UITableViewScrollPositionNone];
-     
-    UISwitch *sw = [self.tableView viewWithTag:3];
-}
+ - (void)viewDidLoad
+ {
+ [super viewDidLoad];
+ 
+ NSLog([NSString stringWithFormat:@"yeah"]);
+ 
+ lastIndexPath_section1 = [NSIndexPath indexPathForRow:1 inSection:1];
+ lastIndexPath_section2 = [NSIndexPath indexPathForRow:1 inSection:2];
+ [self.tableView selectRowAtIndexPath:lastIndexPath_section1 animated:YES scrollPosition:UITableViewScrollPositionNone];
+ [self.tableView selectRowAtIndexPath:lastIndexPath_section2 animated:YES scrollPosition:UITableViewScrollPositionNone];
+ 
+ UISwitch *sw = [self.tableView viewWithTag:3];
+ }
  */
 
 - (void)didReceiveMemoryWarning
@@ -156,10 +172,10 @@
         
         
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\\n\n\n\\n\n\n\n\n\n\n"
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"取消"
-                                                            destructiveButtonTitle:@"确定"
-                                                                 otherButtonTitles:nil];
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"取消"
+                                                   destructiveButtonTitle:@"确定"
+                                                        otherButtonTitles:nil];
         
         actionSheet.userInteractionEnabled = YES;
         UIDatePicker *datePicker = [[UIDatePicker alloc] init] ;
@@ -178,6 +194,7 @@
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if( buttonIndex == 0 ){
         NSDate *new_date = [time_picker  date];
+        now = new_date;
         Time_Show.text = [NSDateFormatter localizedStringFromDate:new_date dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle];
         NSString *message = [NSDateFormatter localizedStringFromDate:new_date dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle];
         NSLog([NSString stringWithFormat:@"%@",message]);
@@ -207,7 +224,7 @@
     label.text = sectionTitle;
     label.textColor = [UIColor darkGrayColor];
     CGFloat width_ =  tableView.bounds.size.width;
-   //width_ /= 10;
+    //width_ /= 10;
     UIView * sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, 220)];
     [sectionView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"alarmSetLine.png"]]];
     [sectionView addSubview:label];

@@ -8,18 +8,50 @@
 
 #import "LIBAppDelegate.h"
 
+
 @implementation LIBAppDelegate
 
 @synthesize window = _window;
+
+
+// 连接改变
+- (void) reachabilityChanged: (NSNotification* )note
+{
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    NetworkStatus status = [curReach currentReachabilityStatus];
+    
+    if (status == NotReachable) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"iSYSU_Library"
+                                                        message:[NSString stringWithFormat:@"当前网络不可用"]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"YES" otherButtonTitles:nil];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"No_Connect" object:nil];
+        [alert show];
+    }else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Connect" object:nil];
+    }
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     
+    //开启网络状况的监听
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name: kReachabilityChangedNotification
+                                               object: nil];
+    hostRech = [Reachability reachabilityWithHostName:@"www.baidu.com"] ;//可以以多种形式初始化
+    [hostRech startNotifier];  //开始监听,会启动一个run loop
+    //[self updateInterfaceWithReachability: hostReach];
+    //.....
+    
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

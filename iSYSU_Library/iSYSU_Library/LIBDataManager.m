@@ -54,10 +54,12 @@
         self.personalInfo = [lib getInfo];
         self.mybookInfo = [lib getMyBookInfo];
         NSLog(@"mybook:%@",mybookInfo);
+        self->isupdate = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"DidUpdate" object:self];
     } else {
         //登录失败，发送广播
         NSLog(@"post din not update");
+        self->isupdate = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"DidNotUpdate" object:self];
     }
     
@@ -65,6 +67,7 @@
 }
 -(void)requestSearchWithParrtern:(NSString *)parrtern
 {
+    self->pagenum = 0;
     LIBClient *lib = [LIBClient new];
     if ([lib search:parrtern]) {
         //搜索成功，发送广播，并存储搜索结果
@@ -125,6 +128,20 @@
     } else {
         //未能更改成功
         [[NSNotificationCenter defaultCenter] postNotificationName:@"did not change password" object:nil];
+    }
+}
+-(void)requestNextPageOfBook
+{
+    self->pagenum++;
+    LIBClient *lib = [LIBClient new];
+    if ([lib nextPage:self->pagenum]) {
+        //刷新，发送广播，并存储结果
+        self.searchResult = [[NSArray alloc] initWithArray:[lib getSearchResult]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"finish refresh" object:self];
+        
+    } else {
+        //搜索失败，发送广播
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"cannot refresh" object:self];
     }
 }
 @end

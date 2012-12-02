@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LIBAppDelegate : UIResponder <UIApplicationDelegate>
+#import "Reachability.h"
+@interface LIBAppDelegate : UIResponder <UIApplicationDelegate>{
+    Reachability *hostRech;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -11,6 +11,7 @@
 @interface LIBTIMEViewController : UITableViewController{
     NSUInteger row_1;
     NSUInteger row_2;
+    NSDate *now;
 }
 @property (strong, nonatomic) NSIndexPath *lastIndexPath_section1;
 @property (strong, nonatomic) NSIndexPath *lastIndexPath_section2;

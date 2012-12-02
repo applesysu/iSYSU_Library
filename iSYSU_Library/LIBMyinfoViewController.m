@@ -57,11 +57,12 @@
     NSArray *arr = [NSArray arrayWithObjects:@"帐号设置",@"提醒设置",nil];  
     self.setting = arr;
     [self setStyle];    
-    //添加observer
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getInfo) name:@"DidUpdate" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Login) name:@"DidNotUpdate" object:nil];
-    [[LIBDataManager shareManager] requestUpdate];
-    
+
+    if ([LIBDataManager shareManager]->isupdate) {
+        [self getInfo];
+            } else {
+                [self Login];
+                    }
 }
 -(void)setStyle
 {
@@ -151,6 +152,7 @@
     [super viewDidUnload];
     [self.navigationController popToRootViewControllerAnimated:YES];
     [self setMybooklist:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 //    [self setSetTable:nil];
         self.setting = nil;
     // Release any retained subviews of the main view.
@@ -196,7 +198,7 @@
         CGRect frame = CGRectMake(30, 10, 22, 22);  
         button.frame = frame;  
         [button setImage:image forState:UIControlStateNormal];  
-        [button addTarget:self action:@selector(rbtnClicked:event:) forControlEvents:UIControlEventTouchUpInside];  
+//        [button addTarget:self action:@selector(rbtnClicked:event:) forControlEvents:UIControlEventTouchUpInside];  
         button.backgroundColor = [UIColor clearColor]; 
         button.tag = 6;
         [cell addSubview: button]; 
@@ -265,10 +267,6 @@
     }
     return timeString; 
 }
--(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
-    NSLog(@"changed to %d in %@",index,groupId);
-    self->currentBookIndex = index;
-}
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
@@ -295,8 +293,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath   
 {
     if (tableView.tag == 2) {
-        NSLog(@"index:%@",indexPath);
+        NSLog(@"index:%d",indexPath.row);
+        self->curbook = indexPath.row;
+//        LIBBookViewController *bookview = [[LIBBookViewController alloc] init];
+//        [self.navigationController pushViewController: bookview animated:YES];
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    LIBBookViewController *bookViewController = segue.destinationViewController;    
+//    bookViewController.book = [mybookinfo objectAtIndex:self->curbook];
+//    NSLog(@"%@", bookViewController.book);
+}
 @end
