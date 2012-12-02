@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Book.h"
 @interface LIBTIMEViewController : UITableViewController{
     NSUInteger row_1;
     NSUInteger row_2;
@@ -18,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *Time_Show;
 @property (weak, nonatomic) UIDatePicker *time_picker;
 @property (weak, nonatomic) IBOutlet UISwitch *Switch_button;
-
+@property(strong,nonatomic)Book* book;
 - (NSString *)filePath;
 @end

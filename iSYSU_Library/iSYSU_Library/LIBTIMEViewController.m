@@ -18,7 +18,7 @@
 @synthesize Time_Show;
 @synthesize time_picker;
 @synthesize Switch_button;
-
+@synthesize book;
 - (NSString *)filePath{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDirectory, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];

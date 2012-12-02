@@ -14,7 +14,6 @@
 @synthesize mybooklist;
 @synthesize mybookinfo;
 @synthesize setting;
-@synthesize tableViewCell;
 //点击续借的书的index
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -167,7 +166,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        static NSString *CustomCellIdentifier =@"CellIdentifier";
+        static NSString *CustomCellIdentifier =@"cell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
         NSUInteger row = [indexPath row];
         BOOL usrDark = (row % 2 == 0);
@@ -198,7 +197,7 @@
         CGRect frame = CGRectMake(30, 10, 22, 22);  
         button.frame = frame;  
         [button setImage:image forState:UIControlStateNormal];  
-//        [button addTarget:self action:@selector(rbtnClicked:event:) forControlEvents:UIControlEventTouchUpInside];  
+        [button addTarget:self action:@selector(rbtnClicked:event:) forControlEvents:UIControlEventTouchUpInside];  
         button.backgroundColor = [UIColor clearColor]; 
         button.tag = 6;
         [cell addSubview: button]; 
@@ -303,7 +302,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     LIBBookViewController *bookViewController = segue.destinationViewController;    
-//    bookViewController.book = [mybookinfo objectAtIndex:self->curbook];
+    bookViewController.book = [mybookinfo objectAtIndex:[self.mybooklist.indexPathForSelectedRow row]];
 //    NSLog(@"%@", bookViewController.book);
 }
 @end
