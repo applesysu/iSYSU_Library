@@ -15,7 +15,7 @@
 -(BOOL)search:(NSString *)bookname;
 -(NSArray *)getSearchResult;
 -(BOOL)update;
--(NSString *)renew:(NSInteger)bookindex;
+-(NSMutableArray *)renew:(NSInteger)bookindex;
 -(NSString *)changeEmail:(NSString*)email;
 -(NSString *)changePhone:(NSString *)phone;
 -(Book *)getBookByIndex:(NSInteger)index;

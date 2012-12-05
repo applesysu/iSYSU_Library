@@ -21,8 +21,8 @@
 }
 @property (strong, nonatomic) IBOutlet UITableView *mybooklist;
 @property (weak,nonatomic)NSArray* mybookinfo;
--(NSString *)RenewWithIndex:(NSInteger)bookindex;
--(NSString *)getRewMsg;
+-(NSMutableArray *)RenewWithIndex:(NSInteger)bookindex;
+-(NSMutableArray *)getRewMsg;
 - (IBAction)logout:(id)sender;
 -(void)Login;
 - (IBAction)DidRenew:(id)sender;

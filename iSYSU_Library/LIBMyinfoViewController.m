@@ -102,14 +102,14 @@
     NSLog(@"mybook info：%@",mybookinfo);
 }
 //请求续借
--(NSString *)RenewWithIndex:(NSInteger)bookindex
+-(NSMutableArray *)RenewWithIndex:(NSInteger)bookindex
 {
     //添加observer
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getRewMsg) name:@"did renew" object:nil];
     [[LIBDataManager shareManager] requestRenew:bookindex];
     return [[LIBDataManager shareManager] renewMsg];
 }
--(NSString *)getRewMsg
+-(NSMutableArray *)getRewMsg
 {
     return [[LIBDataManager shareManager] renewMsg];
 }
@@ -136,9 +136,10 @@
 {
     NSLog(@"%d",currentBookIndex);
     [self RenewWithIndex:self->currentBookIndex];
-    NSString * msg = [self getRewMsg];
-    NSLog(@"%@",msg);
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"续借结果" message:msg delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+    NSMutableArray * msgArr = [self getRewMsg];
+    NSString *renewMsg = [msgArr objectAtIndex:0];
+    NSString *renewResult = [msgArr objectAtIndex:1];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:renewMsg message:renewResult delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
     [alert show];
 }
 

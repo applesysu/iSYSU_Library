@@ -150,8 +150,46 @@
     return NULL;
 }
 
-+ (BOOL)renewABookByIndex:(NSInteger)index
++ (NSMutableArray *)renewABookByIndex:(NSInteger)index
 {
+    NSMutableArray *renewMsg = [NSMutableArray arrayWithCapacity:10];
+    
+    if([User hasUser]){
+        
+        NSString *renewBookId = nil;
+        NSMutableArray *myBooks = [self getMyBorrowedBooks];
+        Book *book = [myBooks objectAtIndex:index];
+        renewBookId = [book renewId];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *baseUrl = [defaults valueForKey:@"baseUrl"];
+
+        NSString *myBookUrlStr = [baseUrl stringByAppendingFormat:@"?func=bor-renew-all&renew_selected=Y&adm_library=ZSU50&%@=Y", renewBookId];
+        NSURL *renewUrl = [[NSURL alloc] initWithString:myBookUrlStr];
+        
+        ASIHTTPRequest *myBookRequest = [ASIHTTPRequest requestWithURL:renewUrl];
+        [myBookRequest startSynchronous];
+        
+        NSData *myBookData = [NSData dataWithContentsOfURL:renewUrl]; 
+
+        TFHpple *myBookxpathParser = [[TFHpple alloc] initWithHTMLData:myBookData];
+        
+        NSArray *renewBookMsgArr = [myBookxpathParser searchWithXPathQuery:@"//div[@class='title']"];
+        NSArray *renewBookMsgArr2 = [myBookxpathParser searchWithXPathQuery:@"//td[@class='td1']/text()"];
+        
+        for (int i = 0; i < [renewBookMsgArr count]; i++) {
+            
+            TFHppleElement *element1 = [renewBookMsgArr objectAtIndex:i];   
+            NSString *renewMsgTitle = [element1 content];                               //续借成功与否的信息
+            [renewMsg addObject:renewMsgTitle];
+        }
+        
+        TFHppleElement *element2 = [renewBookMsgArr2 objectAtIndex:7];
+        NSString *renewResult = [element2 content];                                     //可以续借或不能续借的原因
+        [renewMsg addObject:renewResult];
+    }
+    
+    return renewMsg;
     
 }
 

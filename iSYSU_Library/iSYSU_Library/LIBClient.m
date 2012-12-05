@@ -63,10 +63,10 @@
     return false;
         
 }
--(NSString *)renew:(NSInteger)bookindex
+-(NSMutableArray *)renew:(NSInteger)bookindex
 {
-    NSString * msg = @"renew success";
-    return msg;
+    NSMutableArray *renewMsgArr = [BorrowBooks renewABookByIndex:bookindex];
+    return renewMsgArr;
 }
 -(NSString *)changeEmail:(NSString *)email
 {

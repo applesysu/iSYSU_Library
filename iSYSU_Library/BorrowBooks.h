@@ -18,6 +18,6 @@
 
 + (NSMutableArray *)getMyBorrowedBooks;
 
-+ (BOOL)renewABookByIndex: (NSInteger)index;
++ (NSMutableArray *)renewABookByIndex: (NSInteger)index;
 
 @end
