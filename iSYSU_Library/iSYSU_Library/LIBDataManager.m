@@ -7,16 +7,17 @@
 //
 
 #import "LIBDataManager.h"
+#import "Book.h"
 
 @implementation LIBDataManager
 @synthesize personalInfo;
 @synthesize mybookInfo;
-@synthesize searchResult;
 @synthesize renewMsg;
 @synthesize changPhoneMsg;
 @synthesize changeEmailMsg;
 @synthesize bookname;
 @synthesize isbn;
+@synthesize searchResult;
 @synthesize number;
 @synthesize borrownumber;
 @synthesize star;
@@ -136,8 +137,13 @@
     LIBClient *lib = [LIBClient new];
     if ([lib nextPage:self->pagenum]) {
         //刷新，发送广播，并存储结果
-        self.searchResult = [[NSArray alloc] initWithArray:[lib getSearchResult]];
-        NSLog(@"new %@", self.searchResult);
+        //self.searchResult = [[NSArray alloc] initWithArray:[lib getSearchResult]];
+        NSMutableArray *tmpArr = [[NSMutableArray alloc] initWithArray:searchResult];
+        [tmpArr addObjectsFromArray:[lib getSearchResult]];
+        
+        self.searchResult = nil;
+        self.searchResult = [[NSArray alloc] initWithArray:tmpArr];
+        NSLog(@"%@%d", self.searchResult, [self.searchResult count]);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"finish refresh" object:self];
         
     } else {

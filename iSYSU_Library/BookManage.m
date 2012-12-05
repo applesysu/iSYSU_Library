@@ -129,13 +129,15 @@
     
     NSString *searchNextPageUrl = [baseUrl stringByAppendingString:@"?func=short-jump&jump="];
     
-    NSInteger count;
+    int count;
     if(num > 0){
         
-        count = (num - 1) * 10 + 1;
+        count = (num) * 10 + 1;
     }
-    
-    [searchNextPageUrl stringByAppendingFormat:@"%d", count];
+    NSString *stringInt = [NSString stringWithFormat:@"%d",count];
+    NSLog(@"%@", stringInt);
+    searchNextPageUrl = [searchNextPageUrl stringByAppendingString:stringInt];
+    NSLog(@"search url %@", searchNextPageUrl);
     
     NSURL *nextPage = [[NSURL alloc] initWithString:searchNextPageUrl];
     ASIHTTPRequest *searchRequest = [ASIHTTPRequest requestWithURL:nextPage];

@@ -59,6 +59,14 @@
 }
 -(void)changeBooklist
 {
+    self.bookList = [[LIBDataManager shareManager] searchResult];
+    NSLog(@"nani%@", bookList);
+    Book *book = [Book new];
+    book = [bookList objectAtIndex:0];
+    NSLog(@"%@", [book bookName]);
+    
+    book = [bookList objectAtIndex:10];
+    NSLog(@"%@", [book bookName]);
     [tableview reloadData];
 }
 //获取书的信息
@@ -97,11 +105,12 @@
     LIBBookViewController *bookViewController = segue.destinationViewController;
     
     bookViewController.book = [bookList objectAtIndex:[self.tableview.indexPathForSelectedRow row]];
-    NSLog(@"%@", bookViewController.book);
+    //NSLog(@"%@", bookViewController.book);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"count %d", bookList.count);
     return bookList.count;
 }
 

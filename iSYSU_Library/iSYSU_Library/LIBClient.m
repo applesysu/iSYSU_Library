@@ -106,11 +106,11 @@
 //    NSLog(@"booklist q%@", bookList);
     NSMutableArray *addedBookList = [BookManage requestForMoreSearchBooks: pageNum];
     
-    NSLog(@"add%@", addedBookList);
-    NSLog(@"old%@", bookList);
-    [bookList addObjectsFromArray:addedBookList];
+    NSLog(@"%d", pageNum);
     
-    NSLog(@"ddd%@", bookList);
+    bookList = nil;
+    bookList = addedBookList;
+    NSLog(@"added %@", bookList);
     return true;
 }
 @end
