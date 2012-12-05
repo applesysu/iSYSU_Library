@@ -16,7 +16,7 @@
 }
 @property(strong,nonatomic) NSArray* personalInfo;
 @property(strong,nonatomic) NSArray* mybookInfo;
-@property(strong,nonatomic) NSArray* searchResult;
+@property(strong,nonatomic) NSMutableArray* searchResult;
 @property(strong,nonatomic)NSString* renewMsg;
 @property(strong,nonatomic)NSString* changeEmailMsg;
 @property(strong,nonatomic)NSString* changPhoneMsg;

@@ -137,6 +137,7 @@
     if ([lib nextPage:self->pagenum]) {
         //刷新，发送广播，并存储结果
         self.searchResult = [[NSArray alloc] initWithArray:[lib getSearchResult]];
+        NSLog(@"new %@", self.searchResult);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"finish refresh" object:self];
         
     } else {

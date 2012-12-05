@@ -12,7 +12,7 @@
 @interface LIBSearchResultViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 
-@property(retain, nonatomic)NSArray* bookList;
+@property(strong, nonatomic)NSArray* bookList;
 @property(strong,nonatomic)NSString* keyword;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 -(void)getBook;

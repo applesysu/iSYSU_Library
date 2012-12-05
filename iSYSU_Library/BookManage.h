@@ -13,6 +13,6 @@
 
 + (NSMutableArray *)searchBooksByName: (NSString *)bookName;
 + (Book *)getABookInfoBySystemId: (NSString *)systemId;
-+ (NSMutableArray *)requestForMoreSearchBooks;
++ (NSMutableArray *)requestForMoreSearchBooks: (NSInteger)num;
 
 @end

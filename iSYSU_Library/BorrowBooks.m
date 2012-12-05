@@ -18,6 +18,7 @@
     NSString *myBookName;                               //借的书的名字
     NSString *bookInfo;                                 //借的书的归还日期
     NSString *systemId;                                 //借的书的系统号
+    NSString *renewBookId;                              //续借所需的序列号
     
     NSMutableArray *bookList = [NSMutableArray arrayWithCapacity:10];                           //包含我借的书的数组
     
@@ -40,6 +41,7 @@
         NSArray *myBooks = [myBookxpathParser searchWithXPathQuery:@"//td[@class='td1']/text()"];
         NSArray *myBooklinks = [myBookxpathParser searchWithXPathQuery:@"//td[@class='td1']/a/text()"];
         NSArray *aArray = [myBookxpathParser searchWithXPathQuery:@"//td[@class='td1']/a"];
+        NSArray *renewBookIdArr = [myBookxpathParser searchWithXPathQuery:@"//td[@class='td1']/input"];
         
         
             
@@ -49,6 +51,7 @@
         NSMutableArray *myBorrowedBookNames = [NSMutableArray arrayWithCapacity:10];
         NSMutableArray *myBorrowedBookReturnDate = [NSMutableArray arrayWithCapacity:10];
         NSMutableArray *myBookBorrowedSystemId = [NSMutableArray arrayWithCapacity:10];
+        NSMutableArray *myRenewBookIdentifier = [NSMutableArray arrayWithCapacity:10];
         
         //得到所借书的书名
         //myBookLinks的个数是书本个数的2倍 + 1
@@ -88,8 +91,6 @@
         }
         
         //得到所借书的归还日期
-        int infoCount = [myBooks count];
-        NSLog(@"%d", infoCount);
             
         for(int i = 0; i < [myBooks count]; i++)
         {
@@ -114,6 +115,16 @@
             
         }
         
+        //得到续借的identifier
+        
+        for(int i = 0; i < [renewBookIdArr count]; i++)
+        {
+            TFHppleElement *renewBookIdntifier = [renewBookIdArr objectAtIndex:i];
+            NSString *renewIdStr = [renewBookIdntifier objectForKey:@"name"];
+            [myRenewBookIdentifier addObject:renewIdStr];
+        }
+        
+        
         //将我借阅的书籍和它的归还日期插入到数组中
         for(int i = 0; i < (([myBooklinks count] - 1) / 2); i++){
             
@@ -122,10 +133,12 @@
             myBookName = [myBorrowedBookNames objectAtIndex:i];
             bookInfo = [myBorrowedBookReturnDate objectAtIndex:i];
             systemId = [myBookBorrowedSystemId objectAtIndex:i];
+            renewBookId = [myRenewBookIdentifier objectAtIndex:i];
             
             [borrowBook setBookName:myBookName];
             [borrowBook setReturnDate:bookInfo];
             [borrowBook setSystemId:systemId];
+            [borrowBook setRenewId:renewBookId];
             
             [bookList addObject:borrowBook];
             
@@ -135,6 +148,11 @@
     }
     
     return NULL;
+}
+
++ (BOOL)renewABookByIndex:(NSInteger)index
+{
+    
 }
 
 @end

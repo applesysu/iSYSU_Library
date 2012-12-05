@@ -30,4 +30,6 @@
 
 @property (strong, nonatomic) NSString *bookInfo;                   //图书的摘要
 
+@property (strong, nonatomic) NSString *renewId;                    //续借的序列号
+
 @end

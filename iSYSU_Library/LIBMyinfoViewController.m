@@ -282,7 +282,7 @@
     else{
         Book *book = [Book new];
         book = [mybookinfo objectAtIndex:idx];
-        NSString *name = [[NSString alloc]initWithFormat:@"你选择了《%@》，单击续接按钮续借",book.bookName]; 
+        NSString *name = [[NSString alloc]initWithFormat:@"你选择了《%@》，单击续借按钮续借",book.bookName]; 
         NSLog(@"idx:%@",name);
         self->currentBookIndex = idx;
         renewBook.text = name;

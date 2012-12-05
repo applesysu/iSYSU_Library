@@ -118,7 +118,7 @@
     return returnSearchBookList;
 }
 
-+ (NSMutableArray *)requestForMoreSearchBooks
++ (NSMutableArray *)requestForMoreSearchBooks: (NSInteger)num
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *baseUrl = [defaults valueForKey:@"searchBaseUrl"];
@@ -128,6 +128,14 @@
     NSMutableArray *returnSearchBookList = [NSMutableArray arrayWithCapacity:10];
     
     NSString *searchNextPageUrl = [baseUrl stringByAppendingString:@"?func=short-jump&jump="];
+    
+    NSInteger count;
+    if(num > 0){
+        
+        count = (num - 1) * 10 + 1;
+    }
+    
+    [searchNextPageUrl stringByAppendingFormat:@"%d", count];
     
     NSURL *nextPage = [[NSURL alloc] initWithString:searchNextPageUrl];
     ASIHTTPRequest *searchRequest = [ASIHTTPRequest requestWithURL:nextPage];

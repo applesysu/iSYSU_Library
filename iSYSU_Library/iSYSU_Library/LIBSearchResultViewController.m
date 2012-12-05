@@ -42,7 +42,7 @@
     [[LIBDataManager shareManager] requestSearchWithParrtern:self.keyword];
     [self.tableview addPullToRefreshWithActionHandler:^{
         [self refresh];
-        [tableview.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:1];
+        [tableview.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:2];
     }];
     
     // trigger the refresh manually at the end of viewDidLoad
@@ -53,7 +53,9 @@
 -(void)refresh
 {
     //添加observer
+    [[LIBDataManager shareManager] requestNextPageOfBook];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBooklist) name:@"finish refresh" object:nil];
+    
 }
 -(void)changeBooklist
 {

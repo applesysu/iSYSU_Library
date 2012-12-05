@@ -103,6 +103,14 @@
 {
     //更新booklist，注意是要加进去～～
 //    [bookList addObject:@"1"];
-    return YES;
+//    NSLog(@"booklist q%@", bookList);
+    NSMutableArray *addedBookList = [BookManage requestForMoreSearchBooks: pageNum];
+    
+    NSLog(@"add%@", addedBookList);
+    NSLog(@"old%@", bookList);
+    [bookList addObjectsFromArray:addedBookList];
+    
+    NSLog(@"ddd%@", bookList);
+    return true;
 }
 @end

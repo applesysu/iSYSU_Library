@@ -20,5 +20,6 @@
 @synthesize bookInfo;
 @synthesize bookStateCopyNumber;
 @synthesize bookStateBorrowedNumber;
+@synthesize renewId;
 
 @end
